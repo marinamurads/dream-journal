@@ -1,0 +1,1 @@
+{"root":["./src/app.tsx","./src/message.tsx","./src/main.tsx","./src/vite-env.d.ts","./src/components/dreamform.tsx","./src/components/dreamtable.tsx","./src/pages/home.tsx","./src/services/api.ts","./src/types/index.ts"],"version":"5.8.3"}

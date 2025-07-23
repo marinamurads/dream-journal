@@ -1,12 +1,11 @@
 import express from 'express';
-import cors from 'cors';
+import path from 'path';
 import { PrismaClient } from '@prisma/client';
 
 const app = express();
 const prisma = new PrismaClient();
-const PORT = 4000;
+const PORT = process.env.PORT || 4000;
 
-app.use(cors());
 app.use(express.json());
 
 // GET all dreams
@@ -55,8 +54,15 @@ app.delete('/dreams/:id', async (req, res) => {
   }
 });
 
+// Serve frontend static files
+app.use(express.static(path.join(__dirname, '../client/dist')));
+
+// Serve index.html for unknown routes (SPA support)
+app.get('*', (_req, res) => {
+  res.sendFile(path.join(__dirname, '../client/dist/index.html'));
+});
+
 // Start the server
 app.listen(PORT, () => {
   console.log(`🚀 Dream Journal API running at http://localhost:${PORT}`);
 });
-

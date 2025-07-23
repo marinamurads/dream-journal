@@ -3,7 +3,7 @@
 import axios from 'axios';
 import { type Dream } from '../types';
 
-const API_URL = 'http://localhost:4000/dreams';
+const API_URL = '/dreams';
 
 export const fetchDreams = async (): Promise<Dream[]> => {
   const res = await axios.get(API_URL);
